@@ -469,6 +469,7 @@ public class RDBMSMessageStoreImpl implements MessageStore {
             storeContentPS = connection.prepareStatement(PS_INSERT_MESSAGE_PART);
 
             AndesMessageMetadata metadata = message.getMetadata();
+            log.info("Andes message metadata : " + metadata.toString());
             storeMetadataPS.setLong(1, metadata.getMessageID());
             storeMetadataPS.setInt(2, getCachedQueueID(metadata.getStorageQueueName()));
             storeMetadataPS.setBytes(3, metadata.getMetadata());
